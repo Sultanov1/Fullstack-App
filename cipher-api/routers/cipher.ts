@@ -1,9 +1,10 @@
-import {vigenereCipher} from "./vigenereCipher";
+
 import express from 'express';
+import {vigenereCipher} from './vigenereCipher';
 
-const codingRouter = express.Router();
+const cipherRouter = express.Router();
 
-codingRouter.post('/encode', (req, res) => {
+cipherRouter.post('/encode', (req, res) => {
   const {password, message} = req.body;
   if (!password || !message) {
     return res.status(400).send({error: "send password and message"});
@@ -13,8 +14,7 @@ codingRouter.post('/encode', (req, res) => {
   res.send(encodedMessage);
 });
 
-
-codingRouter.post('/decode', (req, res) => {
+cipherRouter.post('/decode', (req, res) => {
   const {password, message} = req.body;
   if (!password || !message) {
     return res.status(400).send({error: "send password and message"});
@@ -24,6 +24,4 @@ codingRouter.post('/decode', (req, res) => {
   res.send(decodeMessage);
 })
 
-
-
-export default codingRouter;
+export default cipherRouter;
